@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
+import Applications from "./components/Applications/Applications";
+import NewApplication from "./components/Form/NewApplication";
 function App() {
+  const applications = [
+    {
+      id: 1,
+      title: "Data Analyst Intern",
+      company: "Amazon",
+      status: "Applied",
+      date: "Summer 2022",
+    },
+    {
+      id: 2,
+      title: "Data Analyst Intern",
+      company: "Amazon",
+      status: "Applied",
+      date: "Summer 2022",
+    },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <NewApplication></NewApplication>
+      <Applications applications={applications}></Applications>
+    </React.Fragment>
   );
 }
 
