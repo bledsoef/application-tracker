@@ -1,64 +1,35 @@
 import React, { useState } from "react";
 import Card from "../UI/Card";
+import NewApplicationForm from "./NewApplicationForm";
 
 import styles from "./NewApplication.module.css";
 
 const NewApplication = (props) => {
-  const [enteredInternshipTitle, setInternshipTitle] = useState("");
-  const [enteredInternshipCompany, setInternshipCompany] = useState("");
-  const [enteredInternshipStatus, setInternshipStatus] = useState("");
-  const submitHandler = (event) => {
-    event.preventDefault();
-    setInternshipTitle("");
-    setInternshipCompany("");
-    setInternshipStatus("");
-
+  const [formShow, setFormShow] = useState(false);
+  const saveExpenseDataHandler = (enteredExpenseData) => {
+    const expenseData = {
+      ...enteredExpenseData,
+    };
+    props.onNewApplication(expenseData);
+    setFormShow(false);
   };
-  const titleChangeHandler = (event) => {
-    setInternshipTitle(event.target.value);
+  const startEditingHandler = () => {
+    setFormShow(true);
   };
-  const companyChangeHandler = (event) => {
-    setInternshipCompany(event.target.value);
-  };
-  const statusChangeHandler = (event) => {
-    setInternshipStatus(event.target.value);
+  const stopEditingHandler = () => {
+    setFormShow(false);
   };
   return (
     <Card className={styles["new-application"]}>
-      <form onSubmit={submitHandler}>
-        <div className={styles["new-application__controls"]}>
-          <div className={styles["new-application__control"]}>
-            <label>Title</label>
-            <input
-              type="text"
-              value={enteredInternshipTitle}
-              onChange={titleChangeHandler}
-            />
-          </div>
-          <div className={styles["new-application__control"]}>
-            <label>Status</label>
-            <input
-              type="text"
-              value={enteredInternshipStatus}
-              onChange={statusChangeHandler}
-            />
-          </div>
-          <div className={styles["new-application__control"]}>
-            <label>Company</label>
-            <input
-              type="text"
-              value={enteredInternshipCompany}
-              onChange={companyChangeHandler}
-            />
-          </div>
-        </div>
-        <div className={styles["new-application__actions"]}>
-          <button type="button" onClick={props.onCancel}>
-            Cancel
-          </button>
-          <button type="submit">Add Expense</button>
-        </div>
-      </form>
+      {!formShow && (
+        <button onClick={startEditingHandler}>Track New Application</button>
+      )}
+      {formShow && (
+        <NewApplicationForm
+          onSaveApplicationData={saveExpenseDataHandler}
+          onCancel={stopEditingHandler}
+        />
+      )}
     </Card>
   );
 };

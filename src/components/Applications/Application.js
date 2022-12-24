@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./Application.module.css";
 import Card from "../UI/Card";
+import ApplicationDate from "./ApplicationDate";
 
 const Application = (props) => {
-
-
   return (
     <Card className={styles["application-entry"]}>
-      <div>{props.company}</div>
+      <ApplicationDate applicationDate={props.applicationDate}></ApplicationDate>
       <div className={styles["application-entry__title"]}>
-        <h2>{props.title}</h2>
+        <a href={props.link}>{props.title} - {props.company}</a>
         <div className={styles["application-entry__status"]}>{props.status}</div>
       </div>
     </Card>

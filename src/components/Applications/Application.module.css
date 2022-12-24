@@ -4,7 +4,7 @@
     align-items: center;
     padding: 0.5rem;
     margin: 1rem 0;
-    background-color: #4b4b4b;
+    background-color: #4169e1;
   }
   
   .application-entry__title {
@@ -17,7 +17,14 @@
     flex: 1;
   }
   
-  .application-entry h2 {
+  .application-entry a {
+    color: #3a3a3a;
+    font-size: 1rem;
+    flex: 1;
+    margin: 0 1rem;
+    color: white;
+  }
+  .application-entry h3 {
     color: #3a3a3a;
     font-size: 1rem;
     flex: 1;
@@ -28,9 +35,9 @@
   .application-entry__status {
     font-size: 1rem;
     font-weight: bold;
-    color: white;
-    background-color: #40005d;
-    border: 1px solid white;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    border: 1px solid rgb(0, 0, 0);
     padding: 0.5rem;
     border-radius: 12px;
   }
@@ -43,8 +50,8 @@
       flex: 1;
     }
   
-    .application-entry__title h2 {
-      font-size: 1.25rem;
+    .application-entry__title a {
+      font-size: 1.5rem;
     }
   
     .application-entry__status {
